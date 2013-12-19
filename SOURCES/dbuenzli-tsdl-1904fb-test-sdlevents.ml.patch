@@ -1,0 +1,23 @@
+--- dbuenzli/tsdl/test/sdlevents.ml
++++ dbuenzli/tsdl-1904fb/test/sdlevents.ml
+@@ -20,6 +20,20 @@
+       match Sdl.create_window ~w:640 ~h:480 "SDL events" flags with 
+       | `Error -> log_err " Create window:"
+       | `Ok w -> 
++            begin match Sdl.num_joysticks () with
++            | `Error -> log_err " Num Joysticks:"
++            | `Ok nj ->
++                log " Num Joysticks: %d" nj;
++                for i = 0 to nj-1 do
++                  match Sdl.joystick_open i with
++                  | `Error -> log_err " Opening Joysticks %d:" i
++                  | `Ok j ->
++                      match Sdl.joystick_name j with
++                      | `Error -> log_err " Getting name for joystick %d:" i
++                      | `Ok jname ->
++                          log " Joystick `%s` opened" jname
++                done;
++            end;
+             Sdl.start_text_input ();
+             let e = Sdl.Event.create () in
+             try 
