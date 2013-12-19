@@ -7,6 +7,7 @@ License:    BSD-3-Clause
 URL:        http://erratique.ch/software/tsdl/
 #Project:   https://github.com/dbuenzli/tsdl
 Source0:    tsdl-%{version}.tar.gz
+Patch0:     dbuenzli-tsdl-1904fb-test-sdlevents.ml.patch
 
 BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-ctypes
@@ -26,6 +27,7 @@ your programs.
 
 %prep
 %setup -q -n tsdl-%{version}
+%patch0 -p2
 
 %build
 ./pkg/pkg-git
