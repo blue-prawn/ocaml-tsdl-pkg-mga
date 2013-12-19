@@ -51,6 +51,7 @@ ocamlfind install tsdl ../pkg/META \
 %{_libdir}/ocaml/tsdl/*.cmi
 %{_libdir}/ocaml/tsdl/*.cma
 %{_libdir}/ocaml/tsdl/*.cmxs
+%{_libdir}/ocaml/tsdl/*_top.ml
 %{_libdir}/ocaml/stublibs/*.so*
 
 %files devel
